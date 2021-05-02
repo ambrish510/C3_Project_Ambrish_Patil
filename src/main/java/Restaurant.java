@@ -3,7 +3,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-//Restauramt POJO
 public class Restaurant {
     private String name;
     private String location;
