@@ -2,12 +2,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestaurantService {
+public class  RestaurantService {
     private static List<Restaurant> restaurants = new ArrayList<>();
-    private static List<Item> selectedItems = new ArrayList<>();
-
     public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
-        for(Restaurant restaurant: restaurants) {
+
+        for(Restaurant restaurant : restaurants) {
             if(restaurant.getName().equals(restaurantName))
                 return restaurant;
         }
@@ -28,37 +27,5 @@ public class RestaurantService {
 
     public List<Restaurant> getRestaurants() {
         return restaurants;
-    }
-
-    public Item findItemInOrderCartByName(String ItemName) throws itemNotFoundException {
-        for(Item Item: selectedItems) {
-            if(Item.getName().equals(ItemName))
-                return Item;
-        }
-        throw new itemNotFoundException(ItemName);
-    }
-
-    public Item addItemsToOrderCart(String name, int price) {
-        Item Item = new Item(name, price);
-        selectedItems.add(Item);
-        return Item;
-    }
-
-    public Item removeItemFromOderCart(String ItemName) throws itemNotFoundException {
-        Item itemToBeRemoved = findItemInOrderCartByName(ItemName);
-        selectedItems.remove(itemToBeRemoved);
-        return itemToBeRemoved;
-    }
-
-    public List<Item> getAllItemsInOrderCart() {
-        return selectedItems;
-    }
-
-    public int getTotalCost(){
-        int TotalCost=0;
-        for(Item Item: selectedItems) {
-            TotalCost = TotalCost + Item.getPrice();
-        }
-        return TotalCost;
     }
 }
