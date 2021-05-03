@@ -13,9 +13,6 @@ public class Item {
 
     @Override
     public String toString(){
-        return  name + ":"
-                + price
-                + "\n"
-                ;
+        return  name + ":" + price + "\n";
     }
 }

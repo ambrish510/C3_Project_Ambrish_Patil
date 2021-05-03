@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RestaurantTest {
+class RestaurantTest{
     Restaurant restaurant;
     LocalTime openingTime;
     LocalTime closingTime;
@@ -40,7 +40,7 @@ class RestaurantTest {
     }
 
     @Test
-    public void removing_item_from_menu_should_decrease_menu_size_by_1() throws itemNotFoundException {
+    public void removing_item_from_menu_should_decrease_menu_size_by_1() throws itemNotFoundException{
         openingTime = LocalTime.parse("10:30:00");
         closingTime = LocalTime.parse("22:00:00");
         restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
@@ -52,7 +52,7 @@ class RestaurantTest {
     }
 
     @Test
-    public void removing_item_that_does_not_exist_should_throw_exception() {
+    public void removing_item_that_does_not_exist_should_throw_exception(){
         openingTime = LocalTime.parse("10:30:00");
         closingTime = LocalTime.parse("22:00:00");
         restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);

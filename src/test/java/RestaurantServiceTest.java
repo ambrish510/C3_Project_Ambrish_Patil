@@ -2,7 +2,7 @@ import org.junit.jupiter.api.*;
 import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RestaurantServiceTest {
+class RestaurantServiceTest{
     RestaurantService service = new RestaurantService();
     Restaurant restaurant;
     LocalTime closingTime;
@@ -10,7 +10,7 @@ class RestaurantServiceTest {
     int initialNumberOfRestaurants;
 
     @Test
-    public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
+    public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException{
         openingTime = LocalTime.parse("10:30:00");
         closingTime = LocalTime.parse("22:00:00");
         service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
@@ -20,7 +20,7 @@ class RestaurantServiceTest {
     }
 
     @Test
-    public void searching_for_non_existing_restaurant_should_throw_exception() throws restaurantNotFoundException {
+    public void searching_for_non_existing_restaurant_should_throw_exception() throws restaurantNotFoundException{
         openingTime = LocalTime.parse("10:30:00");
         closingTime = LocalTime.parse("22:00:00");
         service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
@@ -29,7 +29,7 @@ class RestaurantServiceTest {
     }
 
     @Test
-    public void remove_restaurant_should_reduce_list_of_restaurants_size_by_1() throws restaurantNotFoundException {
+    public void remove_restaurant_should_reduce_list_of_restaurants_size_by_1() throws restaurantNotFoundException{
         openingTime = LocalTime.parse("10:30:00");
         closingTime = LocalTime.parse("22:00:00");
         restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
@@ -41,7 +41,7 @@ class RestaurantServiceTest {
     }
 
     @Test
-    public void removing_restaurant_that_does_not_exist_should_throw_exception() throws restaurantNotFoundException {
+    public void removing_restaurant_that_does_not_exist_should_throw_exception() throws restaurantNotFoundException{
         openingTime = LocalTime.parse("10:30:00");
         closingTime = LocalTime.parse("22:00:00");
         restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
