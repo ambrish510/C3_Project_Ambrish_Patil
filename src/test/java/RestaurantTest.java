@@ -12,8 +12,8 @@ class RestaurantTest {
 
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
-        openingTime = LocalTime.parse("00:30:00");
-        closingTime = LocalTime.parse("03:00:00");
+        openingTime = LocalTime.parse("10:30:00");
+        closingTime = LocalTime.parse("22:00:00");
         restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         System.out.println(restaurant.isRestaurantOpen());
         assertTrue(restaurant.isRestaurantOpen());
@@ -22,7 +22,7 @@ class RestaurantTest {
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
         openingTime = LocalTime.parse("10:30:00");
-        closingTime = LocalTime.parse("22:00:00");
+        closingTime = LocalTime.parse("18:00:00");
         restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         assertFalse(restaurant.isRestaurantOpen());
     }
