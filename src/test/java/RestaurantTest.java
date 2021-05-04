@@ -1,5 +1,3 @@
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +11,7 @@ class RestaurantTest{
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
         openingTime = LocalTime.parse("10:30:00");
-        closingTime = LocalTime.parse("22:00:00");
+        closingTime = LocalTime.parse("11:00:00");
         restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         System.out.println(restaurant.isRestaurantOpen());
         assertTrue(restaurant.isRestaurantOpen());
@@ -25,6 +23,44 @@ class RestaurantTest{
         closingTime = LocalTime.parse("18:00:00");
         restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         assertFalse(restaurant.isRestaurantOpen());
+    }
+
+    @Test
+    public void get_menu_should_return_all_items_in_menu(){
+        openingTime = LocalTime.parse("10:30:00");
+        closingTime = LocalTime.parse("22:00:00");
+        restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        assertNotNull(restaurant.getMenu());
+    }
+
+    @Test
+    public void searching_for_existing_item_in_menu_should_return_expected_item(){
+        openingTime = LocalTime.parse("10:30:00");
+        closingTime = LocalTime.parse("22:00:00");
+        restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        assertNotNull(restaurant.findItemByName("Vegetable lasagne"));
+    }
+
+    @Test
+    public void searching_for_non_existing_item_in_menu_should_return_null_item(){
+        openingTime = LocalTime.parse("10:30:00");
+        closingTime = LocalTime.parse("22:00:00");
+        restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        assertNull(restaurant.findItemByName("Vegetable"));
+    }
+
+    @Test
+    public void get_Current_Time_should_return_current_time(){
+        openingTime = LocalTime.parse("10:30:00");
+        closingTime = LocalTime.parse("22:00:00");
+        restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        assertEquals(LocalTime.now(),restaurant.getCurrentTime());
     }
 
     @Test
