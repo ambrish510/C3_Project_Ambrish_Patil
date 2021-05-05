@@ -4,10 +4,7 @@ import java.util.List;
 
 public class  RestaurantService{
     private static List<Restaurant> restaurants = new ArrayList<>();
-    private static List<Item> selectedItems = new ArrayList<>();
-    private int totalCost;
-    Restaurant restaurant;
-
+    
     public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException{
         for(Restaurant restaurant : restaurants){
             if(restaurant.getName().equals(restaurantName))
