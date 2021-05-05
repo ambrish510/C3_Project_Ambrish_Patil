@@ -82,28 +82,6 @@ class RestaurantTest{
     }
 
     @Test
-    public void searching_for_an_item_that_exists_in_menu_should_return_item_object(){
-        openingTime = LocalTime.parse("10:30:00");
-        closingTime = LocalTime.parse("22:00:00");
-        restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
-        restaurant.addToMenu("Sweet corn soup",100);
-        restaurant.addToMenu("Vegetable lasagne", 200);
-        restaurant.addToMenu("dal fry lasagne", 200);
-        assertNotNull(restaurant.findItemByName("dal fry lasagne"));
-    }
-
-    @Test
-    public void searching_for_an_item_that_does_not_exists_in_menu_should_return_null_item_object(){
-        openingTime = LocalTime.parse("10:30:00");
-        closingTime = LocalTime.parse("22:00:00");
-        restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
-        restaurant.addToMenu("Sweet corn soup",100);
-        restaurant.addToMenu("Vegetable lasagne", 200);
-        restaurant.addToMenu("dal fry lasagne", 200);
-        assertNull(restaurant.findItemByName("dal fry"));
-    }
-
-    @Test
     public void when_user_selects_items_from_menu_then_cost_of_selected_items_should_be_calculated() throws itemNotFoundException {
         openingTime = LocalTime.parse("10:30:00");
         closingTime = LocalTime.parse("22:00:00");
