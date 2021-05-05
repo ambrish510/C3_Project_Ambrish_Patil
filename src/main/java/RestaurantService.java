@@ -32,40 +32,4 @@ public class  RestaurantService{
         return restaurants;
     }
 
-    // To search for the items added or selected by the user
-    public Item findItemsInOrderCartByName(String itemName) throws itemNotFoundException{
-        for(Item itemToBeSearched : selectedItems){
-            if(itemToBeSearched.getName().equals(itemName))
-                return itemToBeSearched;
-        }
-        throw new itemNotFoundException(itemName);
-    }
-
-    //to add or select the items from menu by the user
-    public int addItemsToOrderCart(String itemName, int itemPrice){
-        Item itemToBeAdded = new Item(itemName, itemPrice);
-        selectedItems.add(itemToBeAdded);
-        return getTotalCost(selectedItems);
-    }
-
-    //to remove or unselected items by the user from menu
-    public int removeItemsFromOrderCart(String itemName) throws itemNotFoundException{
-        Item itemToBeRemoved = findItemsInOrderCartByName(itemName);
-        selectedItems.remove(itemToBeRemoved);
-        return getTotalCost(selectedItems);
-    }
-
-    //to calculate the total of all the items selected or added by the user
-    public int getTotalCost(List<Item> selectedItems){
-        totalCost=0;
-        for(Item Item: selectedItems) {
-            totalCost = totalCost + Item.getPrice();
-        }
-        return totalCost;
-    }
-
-    //to get the list of all the items added or selected by the user from menu
-    public List<Item> getAllSelectedItems(){
-        return selectedItems;
-    }
 }
