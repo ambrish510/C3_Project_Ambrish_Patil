@@ -4,12 +4,11 @@ import java.util.List;
 
 public class  RestaurantService{
     private static List<Restaurant> restaurants = new ArrayList<>();
-    List<Item> selectedItems = new ArrayList<>();
+    private static List<Item> selectedItems = new ArrayList<>();
+    private int totalCost;
     Restaurant restaurant;
-    int totalCost=0;
 
     public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException{
-
         for(Restaurant restaurant : restaurants){
             if(restaurant.getName().equals(restaurantName))
                 return restaurant;
@@ -43,8 +42,7 @@ public class  RestaurantService{
     }
 
     //to add or select the items from menu by the user
-    public int addItemsToOrderCart(String itemName, int itemPrice) throws itemNotFoundException {
-        totalCost=0;
+    public int addItemsToOrderCart(String itemName, int itemPrice){
         Item itemToBeAdded = new Item(itemName, itemPrice);
         selectedItems.add(itemToBeAdded);
         return getTotalCost(selectedItems);
@@ -52,28 +50,22 @@ public class  RestaurantService{
 
     //to remove or unselected items by the user from menu
     public int removeItemsFromOrderCart(String itemName) throws itemNotFoundException{
-        totalCost=0;
         Item itemToBeRemoved = findItemsInOrderCartByName(itemName);
         selectedItems.remove(itemToBeRemoved);
         return getTotalCost(selectedItems);
     }
 
     //to calculate the total of all the items selected or added by the user
-    public int getTotalCost(List<Item> selectedItems) throws itemNotFoundException {
+    public int getTotalCost(List<Item> selectedItems){
         totalCost=0;
-        for(Item Item : selectedItems){
-            if(restaurant.IsSelectedItemExistsInMenu(Item.getName())==true){
-                totalCost = totalCost + Item.getPrice();
-            }
-            else{
-                throw new itemNotFoundException(Item.getName());
-            }
+        for(Item Item: selectedItems) {
+            totalCost = totalCost + Item.getPrice();
         }
         return totalCost;
     }
 
-    //to get all the selected items from order cart
-    public List<Item> getSelectedItems(){
+    //to get the list of all the items added or selected by the user from menu
+    public List<Item> getAllSelectedItems(){
         return selectedItems;
     }
 }
